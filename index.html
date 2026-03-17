@@ -287,6 +287,17 @@
       }
     }
 
+    /* ===== PLACEHOLDER IMAGES ===== */
+    .placeholder-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.45) saturate(0.25);
+      display: block;
+    }
+
     /* ===== SHARED SECTION ELEMENTS ===== */
     .tag {
       font-family: var(--font-mono);
@@ -1130,6 +1141,7 @@
     </div>
     <div class="reel-wrapper reveal reveal-delay-1">
       <div class="reel-thumb">
+        <img class="placeholder-img" src="https://picsum.photos/seed/cinematic/1920/1080" alt="">
         <div class="reel-play-btn">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </div>
@@ -1142,7 +1154,9 @@
   <!-- ===== ABOUT ===== -->
   <section id="about">
     <div class="about-visual-wrap reveal-left">
-      <div class="about-photo"></div>
+      <div class="about-photo">
+        <img class="placeholder-img" src="https://picsum.photos/seed/portrait/600/800" alt="">
+      </div>
       <div class="about-photo-frame"></div>
       <div class="about-photo-badge">
         <div class="about-photo-badge-num">5+</div>
@@ -1205,7 +1219,7 @@
     <div class="portfolio-grid">
       <div class="proj reveal">
         <div class="proj-img">
-          <div class="proj-bg proj-bg-1"></div>
+          <div class="proj-bg proj-bg-1"><img class="placeholder-img" src="https://picsum.photos/seed/wedding/1200/750" alt=""></div>
         </div>
         <div class="proj-watermark">01</div>
         <div class="proj-overlay"></div>
@@ -1217,7 +1231,7 @@
 
       <div class="proj reveal reveal-delay-1">
         <div class="proj-img">
-          <div class="proj-bg proj-bg-2"></div>
+          <div class="proj-bg proj-bg-2"><img class="placeholder-img" src="https://picsum.photos/seed/urban/900/750" alt=""></div>
         </div>
         <div class="proj-watermark">02</div>
         <div class="proj-overlay"></div>
@@ -1229,7 +1243,7 @@
 
       <div class="proj reveal reveal-delay-1">
         <div class="proj-img">
-          <div class="proj-bg proj-bg-3"></div>
+          <div class="proj-bg proj-bg-3"><img class="placeholder-img" src="https://picsum.photos/seed/nightfall/900/750" alt=""></div>
         </div>
         <div class="proj-watermark">03</div>
         <div class="proj-overlay"></div>
@@ -1241,7 +1255,7 @@
 
       <div class="proj reveal reveal-delay-2">
         <div class="proj-img">
-          <div class="proj-bg proj-bg-4"></div>
+          <div class="proj-bg proj-bg-4"><img class="placeholder-img" src="https://picsum.photos/seed/nordic/900/750" alt=""></div>
         </div>
         <div class="proj-watermark">04</div>
         <div class="proj-overlay"></div>
@@ -1253,7 +1267,7 @@
 
       <div class="proj reveal reveal-delay-3">
         <div class="proj-img">
-          <div class="proj-bg proj-bg-5"></div>
+          <div class="proj-bg proj-bg-5"><img class="placeholder-img" src="https://picsum.photos/seed/dusk/900/750" alt=""></div>
         </div>
         <div class="proj-watermark">05</div>
         <div class="proj-overlay"></div>
