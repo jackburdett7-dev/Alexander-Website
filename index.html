@@ -7,6 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <style>
     /* ===== VARIABLES ===== */
     :root {
@@ -407,9 +412,22 @@
       justify-content: space-between;
       margin-bottom: 40px;
     }
+    /* ===== WORD ROTATION (giuligartner-style) ===== */
+    .word-wrap {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+      margin-right: 0.2em;
+    }
+    .word-wrap:last-child { margin-right: 0; }
+    .word {
+      display: inline-block;
+      transform-origin: 0% 100%;
+    }
+
     .reel-heading {
       font-family: var(--font-display);
-      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-size: clamp(4rem, 9vw, 9rem);
       line-height: 1;
       letter-spacing: 0.02em;
     }
@@ -573,14 +591,10 @@
     .about-content { }
     .about-heading {
       font-family: var(--font-display);
-      font-size: clamp(3.5rem, 5.5vw, 5.5rem);
+      font-size: clamp(4rem, 9vw, 9rem);
       line-height: 0.93;
       margin-top: 16px;
       margin-bottom: 36px;
-    }
-    .about-heading-outline {
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(236,231,222,0.25);
     }
     .about-body {
       font-size: 0.95rem;
@@ -741,7 +755,7 @@
     }
     .portfolio-heading {
       font-family: var(--font-display);
-      font-size: clamp(3rem, 5.5vw, 5rem);
+      font-size: clamp(4rem, 9vw, 9rem);
       line-height: 0.93;
       margin-top: 16px;
     }
@@ -968,9 +982,15 @@
       position: relative;
       z-index: 1;
     }
-    .contact-heading span {
+    .contact-heading .contact-outline,
+    .contact-heading .contact-outline .word {
       color: transparent;
-      -webkit-text-stroke: 1px rgba(236,231,222,0.2);
+      -webkit-text-stroke: 1px rgba(233,233,233,0.2);
+    }
+    .about-heading-outline,
+    .about-heading-outline .word {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(233,233,233,0.25);
     }
     .contact-actions {
       display: flex;
@@ -1152,7 +1172,6 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#portfolio">Work</a></li>
-      <li><a href="#services">Services</a></li>
       <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
     </ul>
   </nav>
@@ -1230,7 +1249,11 @@
     <div class="reel-header">
       <div>
         <div class="tag reveal" data-index="01 /">Showreel</div>
-        <h2 class="reel-heading reveal reveal-delay-1">WATCH THE REEL</h2>
+        <h2 class="reel-heading gsap-heading">
+          <span class="word-wrap"><span class="word">WATCH</span></span>
+          <span class="word-wrap"><span class="word">THE</span></span>
+          <span class="word-wrap"><span class="word">REEL</span></span>
+        </h2>
       </div>
       <div class="reel-year reveal">2026</div>
     </div>
@@ -1258,9 +1281,10 @@
 
     <div class="about-content">
       <div class="tag reveal" data-index="02 /">About</div>
-      <h2 class="about-heading reveal reveal-delay-1">
-        BEHIND<br>
-        <span class="about-heading-outline">THE LENS</span>
+      <h2 class="about-heading gsap-heading">
+        <span class="word-wrap"><span class="word">BEHIND</span></span><br>
+        <span class="word-wrap about-heading-outline"><span class="word">THE</span></span>
+        <span class="word-wrap about-heading-outline"><span class="word">LENS</span></span>
       </h2>
       <p class="about-body reveal reveal-delay-2">
         I'm <strong>Alexander M. Lucas</strong> — a filmmaker: cinematographer, editor and colourist
@@ -1290,64 +1314,14 @@
     </div>
   </section>
 
-  <!-- ===== SERVICES ===== -->
-  <section id="services">
-    <div class="services-intro">
-      <div>
-        <div class="tag reveal" data-index="03 /">What I Do</div>
-        <h2 class="services-heading reveal reveal-delay-1">
-          EVERY<br>FRAME<br>COUNTS
-        </h2>
-      </div>
-      <p class="services-subtext reveal reveal-delay-2">
-        From intimate wedding days to large-scale commercial productions,
-        I bring the same meticulous attention to every frame — because
-        every story deserves to be told beautifully.
-      </p>
-    </div>
-
-    <div class="services-list">
-      <div class="service-card reveal">
-        <div class="service-num">01</div>
-        <h3 class="service-title">WEDDINGS &<br>EVENTS</h3>
-        <p class="service-body">Timeless wedding films that capture every emotion, every glance, every moment you'll want to relive forever.</p>
-        <div class="service-icon">
-          <svg viewBox="0 0 18 18"><path d="M9 2l1.5 4.5H15l-3.5 2.5 1.5 4.5L9 11l-4 2.5 1.5-4.5L3 6.5h4.5z" stroke-width="1.2"/></svg>
-        </div>
-      </div>
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-num">02</div>
-        <h3 class="service-title">COMMERCIAL &<br>BRAND FILM</h3>
-        <p class="service-body">Compelling brand stories and product visuals that cut through the noise and connect with your audience.</p>
-        <div class="service-icon">
-          <svg viewBox="0 0 18 18"><rect x="2" y="4" width="14" height="10" rx="1" stroke-width="1.2"/><path d="M6 4V3M12 4V3" stroke-width="1.2"/></svg>
-        </div>
-      </div>
-      <div class="service-card reveal reveal-delay-2">
-        <div class="service-num">03</div>
-        <h3 class="service-title">MUSIC VIDEOS &<br>ARTISTS</h3>
-        <p class="service-body">Visually arresting music videos crafted to amplify your sound and cement your visual identity.</p>
-        <div class="service-icon">
-          <svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" stroke-width="1.2"/><path d="M7 6.5l5 2.5-5 2.5z" stroke-width="1.2"/></svg>
-        </div>
-      </div>
-      <div class="service-card reveal reveal-delay-3">
-        <div class="service-num">04</div>
-        <h3 class="service-title">DOCUMENTARY &<br>SHORT FILM</h3>
-        <p class="service-body">Long-form storytelling with cinematic depth — from personal documentaries to short narrative films.</p>
-        <div class="service-icon">
-          <svg viewBox="0 0 18 18"><rect x="2" y="5" width="14" height="8" rx="1" stroke-width="1.2"/><path d="M5 5V3.5h8V5" stroke-width="1.2"/></svg>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== PORTFOLIO ===== -->
   <section id="portfolio">
     <div class="portfolio-header">
       <div>
         <div class="tag reveal" data-index="04 /">Selected Work</div>
-        <h2 class="portfolio-heading reveal reveal-delay-1">PORTFOLIO</h2>
+        <h2 class="portfolio-heading gsap-heading">
+          <span class="word-wrap"><span class="word">PORTFOLIO</span></span>
+        </h2>
       </div>
       <a href="https://instagram.com/alexander.motif" target="_blank" class="portfolio-link reveal">
         All Projects
@@ -1420,55 +1394,12 @@
     </div>
   </section>
 
-  <!-- ===== PROCESS ===== -->
-  <section id="process">
-    <div class="process-inner">
-      <div class="process-left">
-        <div class="tag reveal" data-index="05 /">Process</div>
-        <h2 class="process-heading reveal reveal-delay-1">
-          HOW WE<br>WORK
-        </h2>
-        <p class="process-desc reveal reveal-delay-2">
-          Every great film starts before the camera rolls.
-          My process is built around deep collaboration —
-          so the final film feels truly yours.
-        </p>
-      </div>
-
-      <div class="process-steps">
-        <div class="step reveal">
-          <div class="step-num">01</div>
-          <div class="step-divider"></div>
-          <h3 class="step-title">DISCOVERY</h3>
-          <p class="step-body">We begin with a conversation — understanding your vision, your story, and what you want people to feel.</p>
-        </div>
-        <div class="step reveal reveal-delay-1">
-          <div class="step-num">02</div>
-          <div class="step-divider"></div>
-          <h3 class="step-title">PRE-PRODUCTION</h3>
-          <p class="step-body">Scripts, shot lists, location scouting — everything is planned so shoot day runs without friction.</p>
-        </div>
-        <div class="step reveal reveal-delay-2">
-          <div class="step-num">03</div>
-          <div class="step-divider"></div>
-          <h3 class="step-title">PRODUCTION</h3>
-          <p class="step-body">On the day, I move with intention — capturing not just what happens, but how it feels.</p>
-        </div>
-        <div class="step reveal reveal-delay-3">
-          <div class="step-num">04</div>
-          <div class="step-divider"></div>
-          <h3 class="step-title">POST &amp; DELIVERY</h3>
-          <p class="step-body">Editing, colour grade, sound design — your film is refined until every frame is exactly right.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== CONTACT ===== -->
   <section id="contact">
     <div class="contact-eyebrow reveal">Available for Bookings</div>
-    <h2 class="contact-heading reveal reveal-delay-1">
-      LET'S<br><span>CREATE</span>
+    <h2 class="contact-heading gsap-heading">
+      <span class="word-wrap"><span class="word">LET'S</span></span><br>
+      <span class="word-wrap contact-outline"><span class="word">CREATE</span></span>
     </h2>
     <div class="contact-actions reveal reveal-delay-2">
       <a href="mailto:alexandermlucas@outlook.com" class="contact-btn-primary">
@@ -1495,13 +1426,43 @@
   </footer>
 
   <script>
-    // Nav scroll state
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
+    gsap.registerPlugin(ScrollTrigger);
 
-    // Scroll reveal
+    // ── Lenis smooth scroll ──────────────────────────────────────────────
+    const lenis = new Lenis({
+      duration: 1.5,
+      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+      touchMultiplier: 1.5,
+    });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    // Nav scroll state via Lenis
+    const nav = document.getElementById('nav');
+    lenis.on('scroll', ({ scroll }) => {
+      nav.classList.toggle('scrolled', scroll > 60);
+    });
+
+    // ── Word-rotation on section headings (giuligartner-style) ───────────
+    document.querySelectorAll('.gsap-heading').forEach(heading => {
+      const words = heading.querySelectorAll('.word');
+      gsap.from(words, {
+        rotationX: -90,
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: 'power2.out',
+        transformOrigin: '0% 100%',
+        scrollTrigger: {
+          trigger: heading,
+          start: 'top 85%',
+        }
+      });
+    });
+
+    // ── IntersectionObserver for remaining .reveal elements ──────────────
     const revealEls = document.querySelectorAll('.reveal, .reveal-left');
     const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -1513,9 +1474,36 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => revealObs.observe(el));
 
-    // Reel click placeholder
+    // ── Reel — scale + fade on scroll ───────────────────────────────────
+    gsap.from('.reel-wrapper', {
+      opacity: 0,
+      scale: 0.97,
+      duration: 1,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: '.reel-wrapper', start: 'top 85%' }
+    });
+
+    // ── Portfolio projects — staggered fade-up ───────────────────────────
+    gsap.from('.proj', {
+      opacity: 0,
+      y: 40,
+      duration: 0.9,
+      stagger: 0.1,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: '.portfolio-grid', start: 'top 80%' }
+    });
+
+    // ── About visual — slide in from left ───────────────────────────────
+    gsap.from('.about-visual-wrap', {
+      opacity: 0,
+      x: -40,
+      duration: 1,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: '#about', start: 'top 80%' }
+    });
+
+    // ── Reel click placeholder ───────────────────────────────────────────
     document.querySelector('.reel-wrapper').addEventListener('click', () => {
-      // In production: open video modal or link to YouTube/Vimeo
       document.querySelector('.reel-play-btn').style.transform = 'scale(0.95)';
       setTimeout(() => document.querySelector('.reel-play-btn').style.transform = '', 200);
     });
