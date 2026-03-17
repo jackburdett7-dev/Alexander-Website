@@ -1067,31 +1067,85 @@
       .nav-links { gap: 22px; }
       .hero-bottom { left: 28px; right: 28px; bottom: 40px; flex-direction: column; align-items: flex-start; gap: 20px; }
       .hero-eyebrow { top: 90px; }
-      #reel, #about, #services, #portfolio, #process, #contact { padding: 80px 28px; }
-      #about {
-        grid-template-columns: 1fr;
-        gap: 60px;
-      }
+      #reel, #about, #portfolio, #contact { padding: 80px 28px; }
+      #about { grid-template-columns: 1fr; gap: 60px; }
       .about-stats { gap: 0; }
-      .services-intro { grid-template-columns: 1fr; gap: 20px; }
-      .services-list { grid-template-columns: 1fr; }
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
+      .portfolio-grid { grid-template-columns: 1fr; }
       .proj { grid-column: 1 / -1 !important; }
       .proj-img, .proj:nth-child(3) .proj-img,
       .proj:nth-child(4) .proj-img,
       .proj:nth-child(5) .proj-img { aspect-ratio: 16/10; }
-      .process-inner { grid-template-columns: 1fr; gap: 48px; }
-      .process-steps { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
       .footer-center { display: none; }
     }
 
     @media (max-width: 600px) {
-      .nav-links .nav-cta,
+      /* Nav — keep only logo + CTA */
       .nav-links li:not(:last-child) { display: none; }
-      .hero-frame { display: none; }
+      nav { padding: 18px 20px; }
+      nav.scrolled { padding: 12px 20px; }
+
+      /* Hero */
+      .hero-names { padding: 0 10px; }
+      .hero-title { font-size: 10vw; }
+      .hero-eyebrow {
+        top: 72px;
+        font-size: 0.45rem;
+        letter-spacing: 0.08em;
+        padding: 0 20px;
+        gap: 8px;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .hero-eyebrow-line { width: 24px; flex-shrink: 0; }
+      .hero-bottom { left: 20px; right: 20px; bottom: 32px; gap: 16px; }
+      .hero-desc { font-size: 0.82rem; }
+
+      /* Sections */
+      #reel, #about, #portfolio, #contact { padding: 64px 20px; }
+      body { overflow-x: hidden; }
+      .reel-heading, .about-heading, .portfolio-heading {
+        font-size: clamp(2.8rem, 13.5vw, 4.5rem);
+      }
+      .contact-heading { font-size: clamp(3rem, 14.5vw, 5.5rem); }
+
+      /* About — clip decorative overflow */
+      #about { overflow: hidden; gap: 36px; }
+      .about-visual-wrap { overflow: visible; }
+      .about-photo-frame { display: none; }
+      .about-photo-badge { right: 0; bottom: 0; }
+      .about-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+      }
+      .about-stat { padding-right: 12px; }
+      .about-stat:last-child { padding-left: 12px; padding-right: 0; }
+      .about-stat:nth-child(2) { padding-left: 12px; }
+      .about-stat-num { font-size: 2.2rem; }
+
+      /* Reel */
+      .reel-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .reel-year { font-size: 0.7rem; }
+
+      /* Portfolio */
+      .portfolio-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .proj-img { aspect-ratio: 4/3; }
+
+      /* Contact */
+      .contact-form { gap: 20px; }
+      .contact-form-row { grid-template-columns: 1fr; }
+
+      /* Footer */
+      footer { padding: 32px 20px; }
+    }
+
+    @media (max-width: 380px) {
+      .hero-title { font-size: 9.5vw; }
+      .reel-heading, .about-heading, .portfolio-heading {
+        font-size: clamp(2.4rem, 13vw, 3.5rem);
+      }
     }
   </style>
 </head>
