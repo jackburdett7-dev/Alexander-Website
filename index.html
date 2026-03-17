@@ -121,6 +121,8 @@
       padding: 160px 56px 100px;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
     .hero-eyebrow {
       font-family: var(--font-mono);
@@ -131,6 +133,7 @@
       margin-bottom: 32px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 14px;
       opacity: 0;
       transform-origin: 50% 100%;
@@ -144,9 +147,10 @@
     }
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(5.5rem, 16vw, 15rem);
+      font-size: clamp(4rem, 11vw, 13rem);
       line-height: 0.9;
       letter-spacing: 0;
+      width: 100%;
     }
     .hero-title-line {
       display: block;
@@ -203,9 +207,10 @@
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
+      width: 100%;
       margin-top: 48px;
       opacity: 0;
-      transform-origin: 0% 100%;
+      transform-origin: 50% 100%;
       animation: heroFlip 0.9s cubic-bezier(0.16,1,0.3,1) 1.2s forwards;
     }
     .hero-desc {
@@ -1130,7 +1135,7 @@
 
     <!-- Image breaks between the two title lines -->
     <div class="hero-image-strip">
-      <img src="https://placehold.co/1920x730/1C2B3A/E9E9E9?text=HERO+SHOT" alt="Hero Shot">
+      <img src="https://picsum.photos/seed/filmmaker/1920/730" alt="Hero Shot">
     </div>
 
     <h1 class="hero-title" aria-hidden="true">
